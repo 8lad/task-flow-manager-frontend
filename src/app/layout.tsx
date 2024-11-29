@@ -1,17 +1,12 @@
 import type { Metadata } from 'next';
-import localFont from 'next/font/local';
 import './globals.scss';
-import { ThemeProvider } from '@/components/shared/ThemeProvider/ThemeProvider';
+// import { ThemeProvider } from '@/components/shared/ThemeProvider/ThemeProvider';
+import { Roboto } from 'next/font/google';
 
-const geistSans = localFont({
-  src: './fonts/GeistVF.woff',
-  variable: '--font-geist-sans',
-  weight: '100 900',
-});
-const geistMono = localFont({
-  src: './fonts/GeistMonoVF.woff',
-  variable: '--font-geist-mono',
-  weight: '100 900',
+const roboto = Roboto({
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '700', '900'],
+  style: ['italic', 'normal'],
 });
 
 export const metadata: Metadata = {
@@ -25,12 +20,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-        <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-          {children}
-        </body>
-      </ThemeProvider>
+    <html lang="en" className={roboto.className}>
+      {/* <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange> */}
+      <body className={'antialiased'}>{children}</body>
+      {/* </ThemeProvider> */}
     </html>
   );
 }
