@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import './globals.scss';
-// import { ThemeProvider } from '@/components/shared/ThemeProvider/ThemeProvider';
+import { ThemeProvider } from '@/components/shared/ThemeProvider/ThemeProvider';
 import { Roboto } from 'next/font/google';
 
 const roboto = Roboto({
@@ -20,10 +20,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={roboto.className}>
-      {/* <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange> */}
-      <body className={'antialiased'}>{children}</body>
-      {/* </ThemeProvider> */}
+    <html lang="en" suppressHydrationWarning>
+      <body className={`${roboto.className} antialiased`}>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          {children}
+        </ThemeProvider>
+      </body>
     </html>
   );
 }
