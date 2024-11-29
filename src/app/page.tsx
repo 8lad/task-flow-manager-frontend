@@ -11,10 +11,10 @@ export default function Home() {
       <main className="grow">
         <Container>
           <Heading level="h1" className="text-center">
-            Streamline <span className="text-fuchsia-600">Your Work</span>, One Task at a Time
+            Streamline <span className="text-mainAccent">Your Work</span>, One Task at a Time
           </Heading>
           <p className="mx-auto mb-8 max-w-[400px] text-center">
-            Task Flow Manager helps you <span className="text-fuchsia-600">organize and track</span>{' '}
+            Task Flow Manager helps you <span className="text-mainAccent">organize and track</span>{' '}
             your projects and tasks with ease, keeping your workflow smooth and efficient.
           </p>
         </Container>

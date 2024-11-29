@@ -10,6 +10,7 @@ export default {
   theme: {
     extend: {
       colors: {
+        mainAccent: 'var(--main-accent)',
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
         card: {
