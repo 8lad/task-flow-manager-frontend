@@ -1,13 +1,20 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Sun, Moon } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useTheme } from 'next-themes';
 
 export const ThemeSwitcher = () => {
   const { setTheme, theme } = useTheme();
+  const [isRendered, setIsRendered] = useState(false);
   const toggleTheme = () => setTheme(theme === 'dark' ? 'light' : 'dark');
+
+  useEffect(() => {
+    setIsRendered(true);
+  }, []);
+
+  if (!isRendered) return null;
 
   return (
     <Button
