@@ -81,7 +81,7 @@ const Cloud = ({ count = 4, radius = 20 }) => {
 
 export const MainAnimation = () => {
   return (
-    <div className="h-[55vh] w-full">
+    <div className="h-[53vh] w-full">
       <Canvas dpr={[1, 2]} camera={{ position: [0, 0, 35], fov: 90 }}>
         <fog attach="fog" args={['#202025', 0, 80]} />
         <Suspense fallback={null}>
