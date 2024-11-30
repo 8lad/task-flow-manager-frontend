@@ -1,7 +1,8 @@
 import type { Metadata } from 'next';
-import './globals.scss';
 import { ThemeProvider } from '@/components/shared/ThemeProvider/ThemeProvider';
+import { UserProvider } from '@auth0/nextjs-auth0/client';
 import { Roboto } from 'next/font/google';
+import './globals.scss';
 
 const roboto = Roboto({
   subsets: ['latin'],
@@ -11,21 +12,28 @@ const roboto = Roboto({
 
 export const metadata: Metadata = {
   title: 'Task flow manager',
-  description: 'Start to manage your project',
+  description: 'Start to manage your tasks',
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${roboto.className} prose antialiased`}>
-        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
-          {children}
-        </ThemeProvider>
-      </body>
+      <UserProvider>
+        <body className={`${roboto.className} prose antialiased`}>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="dark"
+            enableSystem
+            disableTransitionOnChange
+          >
+            {children}
+          </ThemeProvider>
+        </body>
+      </UserProvider>
     </html>
   );
 }

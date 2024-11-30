@@ -3,6 +3,8 @@ import { ThemeSwitcher } from '../ThemeSwitcher/ThemeSwitcher';
 import { Container } from '../Container/Container';
 import Logo from '@/components/icons/Logo';
 import clsx from 'clsx';
+import { Button } from '@/components/ui/button';
+import Link from 'next/link';
 
 interface HeaderProps {
   className?: string;
@@ -14,7 +16,15 @@ export const Header: React.FC<HeaderProps> = ({ className }) => {
       <Container>
         <div className="flex justify-between">
           <Logo className="fill-current" />
-          <ThemeSwitcher />
+          <div className="flex items-center gap-x-4">
+            <Button asChild>
+              <Link href="/api/auth/login">Login</Link>
+            </Button>
+            <Button asChild>
+              <Link href="/api/auth/logout">Logout</Link>
+            </Button>
+            <ThemeSwitcher />
+          </div>
         </div>
       </Container>
     </header>
