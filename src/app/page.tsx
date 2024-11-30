@@ -7,8 +7,8 @@ import { MainAnimation } from '@/components/shared/MainAnimation/MainAnimation';
 export default function Home() {
   const renderDecorativeCircles = () => (
     <>
-      <div className="absolute -bottom-10 -left-40 z-[-1] h-96 w-96 rounded-full bg-mainAccent opacity-15 blur-2xl"></div>
-      <div className="-tor-10 absolute -right-40 z-[-1] h-96 w-96 rounded-full bg-mainAccent opacity-15 blur-2xl"></div>
+      <div className="absolute -bottom-10 -left-40 z-[-1] h-96 w-96 rounded-full bg-main-accent opacity-15 blur-2xl"></div>
+      <div className="-tor-10 absolute -right-40 z-[-1] h-96 w-96 rounded-full bg-main-accent opacity-15 blur-2xl"></div>
     </>
   );
 
@@ -19,10 +19,10 @@ export default function Home() {
       <main className="grow">
         <Container>
           <Heading level="h1" className="text-center">
-            Streamline <span className="text-mainAccent">Your Work</span>, One Task at a Time
+            Streamline <span className="text-main-accent">Your Work</span>, One Task at a Time
           </Heading>
           <p className="mx-auto mb-8 max-w-[400px] text-center">
-            Task Flow Manager helps you <span className="text-mainAccent">organize and track</span>{' '}
+            Task Flow Manager helps you <span className="text-main-accent">organize and track</span>{' '}
             your projects and tasks with ease, keeping your workflow smooth and efficient.
           </p>
         </Container>
