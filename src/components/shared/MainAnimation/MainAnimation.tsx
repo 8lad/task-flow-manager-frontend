@@ -2,7 +2,7 @@
 
 import * as THREE from 'three';
 import { useRef, useState, useMemo, useEffect, Suspense } from 'react';
-import { Canvas, ThreeEvent } from '@react-three/fiber';
+import { Canvas, ThreeEvent, useFrame } from '@react-three/fiber';
 import { Billboard, Text, TrackballControls } from '@react-three/drei';
 import { useTheme } from 'next-themes';
 import { taskWords } from './helpers';
@@ -59,6 +59,14 @@ const Word: React.FC<WordProps> = ({ position, children, ...props }) => {
 };
 
 const Cloud = ({ count = 4, radius = 20 }) => {
+  const groupRef = useRef<THREE.Group>(null);
+
+  useFrame(() => {
+    if (groupRef.current) {
+      groupRef.current.rotation.y += 0.0005;
+      groupRef.current.rotation.x += 0.0005;
+    }
+  });
   const words = useMemo(() => {
     const temp = [];
     const spherical = new THREE.Spherical();
@@ -72,11 +80,15 @@ const Cloud = ({ count = 4, radius = 20 }) => {
         ]);
     return temp;
   }, [count, radius]);
-  return words.map(([pos, word], index) => (
-    <Word position={pos as string} key={index}>
-      {word}
-    </Word>
-  ));
+  return (
+    <group ref={groupRef} rotation={[10, 10.5, 10]}>
+      {words.map(([pos, word], index) => (
+        <Word position={pos as string} key={index}>
+          {word}
+        </Word>
+      ))}
+    </group>
+  );
 };
 
 export const MainAnimation = () => {
@@ -85,9 +97,7 @@ export const MainAnimation = () => {
       <Canvas dpr={[1, 2]} camera={{ position: [0, 0, 35], fov: 90 }}>
         <fog attach="fog" args={['#202025', 0, 80]} />
         <Suspense fallback={null}>
-          <group rotation={[10, 10.5, 10]}>
-            <Cloud count={8} radius={20} />
-          </group>
+          <Cloud count={8} radius={24} />
         </Suspense>
         <TrackballControls />
       </Canvas>
