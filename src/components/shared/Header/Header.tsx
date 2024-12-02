@@ -26,7 +26,7 @@ export const Header: React.FC<HeaderProps> = ({ className }) => {
     return user ? (
       <>
         <Button asChild>
-          <Link href={Auth0Routes.Logout}>Logout</Link>
+          <a href={Auth0Routes.Logout}>Logout</a>
         </Button>
         <Button variant="secondary" asChild>
           <Link href={MainRoutes.Dashboard}>Dashboard</Link>
@@ -47,10 +47,7 @@ export const Header: React.FC<HeaderProps> = ({ className }) => {
     ) : (
       <>
         <Button asChild>
-          <Link href={Auth0Routes.Login}>Login</Link>
-        </Button>
-        <Button variant="secondary" asChild>
-          <Link href={Auth0Routes.SignUp}>Sign Up</Link>
+          <a href={Auth0Routes.Login}>Login</a>
         </Button>
       </>
     );
