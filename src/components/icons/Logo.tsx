@@ -15,7 +15,7 @@ const Logo: React.FC<LogoProps> = ({ className, ...props }) => {
       viewBox="0 0 1024.000000 1024.000000"
       preserveAspectRatio="xMidYMid meet"
       fill="currentColor"
-      className={clsx(className, 'h-[45px] w-[45px] rounded-[50%]')}
+      className={clsx(className, 'h-[45px] w-[45px] shrink-0 rounded-[50%]')}
       {...props}
     >
       <g transform="translate(0.000000,1024.000000) scale(0.100000,-0.100000)" stroke="none">

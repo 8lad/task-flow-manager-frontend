@@ -7,4 +7,5 @@ export enum MainRoutes {
 export enum Auth0Routes {
   Login = '/api/auth/login',
   Logout = '/api/auth/logout',
+  SignUp = '/api/auth/signup',
 }
