@@ -6,7 +6,12 @@ const ERROR_SEARCH_PARAM = 'error';
 const USER_DECLINE_ERROR = 'access_denied';
 
 export const GET = handleAuth({
-  login: handleLogin({ returnTo: MainRoutes.Home }),
+  login: handleLogin({
+    returnTo: MainRoutes.Home,
+    authorizationParams: {
+      prompt: 'login',
+    },
+  }),
   logout: handleLogout({
     returnTo: MainRoutes.Home,
   }),
@@ -16,9 +21,8 @@ export const GET = handleAuth({
         const url = new URL(req.url);
         const error = url.searchParams.get(ERROR_SEARCH_PARAM);
         if (error === USER_DECLINE_ERROR) {
-          return new Response(null, {
-            status: 302,
-            headers: { Location: MainRoutes.Home },
+          return handleLogout(req, res, {
+            returnTo: MainRoutes.Home,
           });
         }
       }
