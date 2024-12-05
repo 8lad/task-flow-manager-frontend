@@ -45,13 +45,7 @@ const Word: React.FC<WordProps> = ({ position, children, ...props }) => {
 
   return (
     <Billboard position={position} {...props}>
-      <Text
-        ref={ref}
-        onPointerOver={over}
-        onPointerOut={out}
-        onClick={() => console.info('clicked')}
-        {...fontProps}
-      >
+      <Text ref={ref} onPointerOver={over} onPointerOut={out} {...fontProps}>
         {children}
       </Text>
     </Billboard>
