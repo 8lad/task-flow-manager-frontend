@@ -1,7 +1,7 @@
 import axios, { AxiosInstance, AxiosRequestConfig, CreateAxiosDefaults } from 'axios';
 
 const axiosConfig: CreateAxiosDefaults = {
-  baseURL: '/',
+  baseURL: process.env.NEXT_PUBLIC_BACKEND_BASE_URL,
 };
 
 const httpInstance: AxiosInstance = axios.create(axiosConfig);
